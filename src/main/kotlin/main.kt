@@ -4,9 +4,9 @@ fun main() {
     Тогда, если я правильно понимаю суть задачи, то:
     при превышении лимита, мы не считаем комиссию и соответственно программа завершает работу
     */
-    val monthlyAmount = 1
-    val amount        = 15001
-    val cardType      = "VK Pay"
+    val monthlyAmount = 70000
+    val amount        = 10000
+    val cardType      = "Mastercard"
 
     when (limitExceeded(cardType, monthlyAmount, amount)) {
         true -> println("Превышен лимит переводов")
@@ -36,7 +36,7 @@ fun calculateCommission(cardType: String = "VK Pay", monthlyAmount: Int = 0, amo
     val minCommissionV        = 35
 
     return when {
-        (cardType == "Mastercard" || cardType == "Maestro") && monthlyAmount > limitM + amount -> (amount * commissionPercentageM).toInt() + commissionAddM
+        (cardType == "Mastercard" || cardType == "Maestro") && monthlyAmount + amount > limitM -> (amount * commissionPercentageM).toInt() + commissionAddM
         (cardType == "Visa" || cardType == "Мир") -> if ((amount * commissionPercentageV) < minCommissionV) {
             minCommissionV
         } else {
