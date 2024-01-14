@@ -58,7 +58,7 @@ class MainKtTest {
         assertEquals(80,
             calculateCommission("Maestro", 70000, 10000))
 
-        assertEquals(0,
+        assertEquals("Ломаю сборку",
             calculateCommission("Maestro", 1, 1))
     }
 }
